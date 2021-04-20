@@ -1,6 +1,27 @@
 ﻿@page "/"
+@*@page "/s/{givens}"*@
 
-<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-16">
-    <MudText Typo="Typo.h3" GutterBottom="true">Hello, world!</MudText>
-</MudContainer>
+
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <MudText Typo="Typo.h5" Class="ml-3">Sudoku</MudText>
+        <MudAppBarSpacer />
+        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+        <MudNavMenu>
+            <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
+        </MudNavMenu>
+    </MudDrawer>
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-16">
+            <MudText Typo="Typo.h3" GutterBottom="true">Sudoku</MudText>
+            <MudText Class="mb-4"> @TempText</MudText>
+            <MudButton Color="Color.Primary" Variant="Variant.Filled" @onclick="MakeSudoku">Make Sudoku</MudButton>
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+
 
