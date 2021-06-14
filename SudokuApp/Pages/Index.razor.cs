@@ -2,12 +2,18 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using SudokuApp.Shared;
+using SudokuApp.Components;
 
 namespace SudokuApp.Pages
 {
     partial class Index
     {
+        [Parameter]
         public string Givens { get; set; }
+
+        private SudokuBoard sudokuBoard;
+
+        public SudokuBoard SudokuBoard => sudokuBoard;
 
         private string TempText = "";
 
@@ -22,5 +28,8 @@ namespace SudokuApp.Pages
         {
             TempText = "Sudoku!";
         }
+
+
     }
+
 }

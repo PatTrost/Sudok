@@ -1,6 +1,7 @@
 ﻿@page "/"
-@*@page "/s/{givens}"*@
+@page "/s/{givens}"
 
+@using SudokuApp.Components
 
 <MudLayout>
     <MudAppBar Elevation="1">
@@ -17,6 +18,7 @@
     <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-16">
             <MudText Typo="Typo.h3" GutterBottom="true">Sudoku</MudText>
+            <SudokuBoard @ref="sudokuBoard" Givens="@Givens"/>
             <MudText Class="mb-4"> @TempText</MudText>
             <MudButton Color="Color.Primary" Variant="Variant.Filled" @onclick="MakeSudoku">Make Sudoku</MudButton>
         </MudContainer>
