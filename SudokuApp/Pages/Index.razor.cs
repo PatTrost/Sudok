@@ -1,8 +1,10 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
 using SudokuApp.Shared;
 using SudokuApp.Components;
+using MudBlazor;
 
 namespace SudokuApp.Pages
 {
@@ -14,6 +16,8 @@ namespace SudokuApp.Pages
         private SudokuBoard sudokuBoard;
 
         public SudokuBoard SudokuBoard => sudokuBoard;
+
+        private ElementReference _element;
 
         private string TempText = "";
 
@@ -29,6 +33,16 @@ namespace SudokuApp.Pages
             TempText = "Sudoku!";
         }
 
+        public void OnClick()
+        {
+            _element.FocusAsync();
+            
+        }
+
+        public void KeyboardEventHandler(KeyboardEventArgs args)
+        {
+            SudokuBoard.KeyboardEventHandler(args);
+        }
 
     }
 

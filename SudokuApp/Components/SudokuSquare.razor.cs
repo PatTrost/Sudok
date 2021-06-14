@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
+using MudBlazor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace SudokuApp.Components
@@ -41,7 +44,7 @@ namespace SudokuApp.Components
             }
             set
             {
-                if(Given != 0)
+                if(Given == 0)
                 {
                     this._value = value;
                 }
@@ -63,7 +66,7 @@ namespace SudokuApp.Components
         [Parameter]
         public int Given { get; set; }
 
-        public string GetStyle()
+        public static string GetStyle()
         {
 
             return "width: 75px; height: 75px;";
@@ -85,6 +88,23 @@ namespace SudokuApp.Components
         public void OnClick()
         {
             this.IsSelected = !this.IsSelected;
+        }
+
+        public void KeyboardEventHandler(KeyboardEventArgs args)
+        {
+            if (this.IsSelected)
+            {
+                try
+                {
+                    int result = Int32.Parse(args.Key);
+                    this.Value = result;
+                    StateHasChanged();
+                }
+                catch
+                {
+
+                }
+            }
         }
     }
 }
