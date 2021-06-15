@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Web;
 using MudBlazor;
 using System;
@@ -13,6 +14,12 @@ namespace SudokuApp.Components
     {
         private int _value;
         private bool _isSelected;
+
+        [Parameter]
+        public EventCallback<MouseEventArgs> Clicked { get; set; }
+
+        [Parameter]
+        public int Given { get; set; }
 
         public string DisplayValue
         {
@@ -47,6 +54,7 @@ namespace SudokuApp.Components
                 if(Given == 0)
                 {
                     this._value = value;
+                    StateHasChanged();
                 }
             }
         }
@@ -60,11 +68,11 @@ namespace SudokuApp.Components
             set
             {
                 this._isSelected = value;
+                StateHasChanged();
             }
         }
 
-        [Parameter]
-        public int Given { get; set; }
+        
 
         public static string GetStyle()
         {
@@ -85,24 +93,33 @@ namespace SudokuApp.Components
             
         }
 
-        public void OnClick()
+        public async void OnClick(MouseEventArgs args)
         {
+            await Clicked.InvokeAsync(args);
             this.IsSelected = !this.IsSelected;
         }
+
+        
 
         public void KeyboardEventHandler(KeyboardEventArgs args)
         {
             if (this.IsSelected)
             {
-                try
+                if(args.Key == "Backspace")
                 {
-                    int result = Int32.Parse(args.Key);
-                    this.Value = result;
-                    StateHasChanged();
+                    this.Value = 0;
                 }
-                catch
+                else
                 {
+                    try
+                    {
+                        int result = Int32.Parse(args.Key);
+                        this.Value = result;
+                    }
+                    catch
+                    {
 
+                    }
                 }
             }
         }

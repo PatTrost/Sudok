@@ -17,26 +17,11 @@ namespace SudokuApp.Pages
 
         public SudokuBoard SudokuBoard => sudokuBoard;
 
-        private ElementReference _element;
-
-        private string TempText = "";
-
-        bool _drawerOpen = true;
+        bool _drawerOpen = false;
 
         void DrawerToggle()
         {
             _drawerOpen = !_drawerOpen;
-        }
-
-        private void MakeSudoku()
-        {
-            TempText = "Sudoku!";
-        }
-
-        public void OnClick()
-        {
-            _element.FocusAsync();
-            
         }
 
         public void KeyboardEventHandler(KeyboardEventArgs args)

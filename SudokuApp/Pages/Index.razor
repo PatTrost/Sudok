@@ -2,12 +2,12 @@
 @page "/s/{givens}"
 
 @using SudokuApp.Components
-<div @ref="_element"
+<div 
     tabindex ="0"
     @onkeydown="KeyboardEventHandler " 
     @onkeypress=" KeyboardEventHandler " 
     @onkeyup="KeyboardEventHandler "
-    @onclick="OnClick">
+    >
     <MudLayout >
         <MudAppBar Elevation="1">
             <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
@@ -24,8 +24,6 @@
             <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-16">
                 <MudText Typo="Typo.h3" GutterBottom="true">Sudoku</MudText>
                 <SudokuBoard @ref="sudokuBoard" Givens="@Givens" Width="9" Height ="9" />
-                <MudText Class="mb-4"> @TempText</MudText>
-                <MudButton Color="Color.Primary" Variant="Variant.Filled" @onclick="MakeSudoku">Make Sudoku</MudButton>
             </MudContainer>
         </MudMainContent>
     </MudLayout>

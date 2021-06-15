@@ -5,6 +5,7 @@ using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using MudBlazor;
+using System.Runtime.CompilerServices;
 
 namespace SudokuApp.Components
 {
@@ -16,20 +17,49 @@ namespace SudokuApp.Components
         public int Width { get; set; }
         [Parameter]
         public int Height { get; set; }
-        private bool Initialised { get; set; }
+
+        private bool _initialised;
+        private List<int> _givens;
 
         public List<SudokuSquare> sudokuSquares;
 
         protected override async Task OnInitializedAsync()
         {
-            if (!this.Initialised)
+            int squareCount = (this.Width * this.Height);
+            if (!this._initialised)
             {
+                _givens = new List<int>();
+
+                if (!String.IsNullOrEmpty(Givens))
+                {
+                    foreach (char c in Givens)
+                    {
+                        try
+                        {
+                            _givens.Add(Int32.Parse(c.ToString()));
+                        }
+                        catch
+                        {
+                            _givens.Add(0);
+                        }
+                    }
+                }
+
+                if (_givens.Count != squareCount)
+                {
+                    for (int i = _givens.Count - 1; i < squareCount; i++)
+                    {
+                        _givens.Add(0);
+                    }
+                }
+
                 sudokuSquares = new List<SudokuSquare>();
-                for (int i = 0; i < (this.Width * this.Height); i++)
+                for (int i = 0; i < squareCount; i++)
                 {
                     sudokuSquares.Add(new SudokuSquare());
                 }
-                this.Initialised = true;
+                
+                this._initialised = true;
             }
         }
 
@@ -44,6 +74,16 @@ namespace SudokuApp.Components
             }
         }
 
+        public void SquareClicked(MouseEventArgs args)
+        {
+            if (!args.CtrlKey)
+            {
+                foreach (SudokuSquare square in sudokuSquares)
+                {
+                    square.IsSelected = false;
+                }
+            }
+        }
         
     }
 }
