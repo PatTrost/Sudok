@@ -29,6 +29,11 @@ namespace SudokuApp.Pages
             SudokuBoard.KeyboardEventHandler(args);
         }
 
+        void CheckSudoku()
+        {
+            SudokuBoard.CheckValues();
+        }
+
     }
 
 }

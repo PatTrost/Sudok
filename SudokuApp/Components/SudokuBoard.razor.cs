@@ -84,6 +84,40 @@ namespace SudokuApp.Components
                 }
             }
         }
+
+        public void CheckValues()
+        {
+            bool conflict;
+            foreach (SudokuSquare square in sudokuSquares)
+            {
+                conflict = false;
+                foreach (SudokuSquare checkSquare in sudokuSquares)
+                {
+                    if(square.Row == checkSquare.Row || square.Column == checkSquare.Column || square.Group == checkSquare.Group)
+                    {
+                        if (square.Value == checkSquare.Value && square.Value != 0 && square != checkSquare)
+                        {
+                            conflict = true;
+                        }
+                    }
+                }
+                if (square.Value == 0)
+                {
+                    square.ErrorState = SquareErrorState.NotChecked;
+                }
+                else
+                {
+                    if (conflict)
+                    {
+                        square.ErrorState = SquareErrorState.Error;
+                    }
+                    else
+                    {
+                        square.ErrorState = SquareErrorState.Safe;
+                    }
+                }
+            }
+        }
         
     }
 }

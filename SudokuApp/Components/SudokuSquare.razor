@@ -2,12 +2,13 @@
 
 <MudItem>
 	<MudPaper Style="height:75px;width:75px;" Outlined="true" Square="true">
-		<MudButton Variant="Variant.Outlined"
+		<MudButton Variant="Variant.Filled"
 			Style=@GetStyle()
 			Color=@GetColor()
 			@onclick ="OnClick"
-			> 
-				@DisplayValue
+			>
+			
+			<MudText Color=@GetTextColor()>@DisplayValue</MudText>
 		</MudButton>
 	</MudPaper>
 </MudItem>

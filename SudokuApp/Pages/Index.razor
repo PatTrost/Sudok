@@ -24,6 +24,7 @@
             <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-16">
                 <MudText Typo="Typo.h3" GutterBottom="true">Sudoku</MudText>
                 <SudokuBoard @ref="sudokuBoard" Givens="@Givens" Width="9" Height ="9" />
+                <MudButton Variant="Variant.Filled" OnClick="CheckSudoku">Check Sudoku</MudButton>
             </MudContainer>
         </MudMainContent>
     </MudLayout>

@@ -10,16 +10,33 @@ using System.Threading.Tasks;
 
 namespace SudokuApp.Components
 {
+    public enum SquareErrorState
+    {
+        NotChecked,
+        Error,
+        Safe
+    }
+
     public partial class SudokuSquare
     {
         private int _value;
         private bool _isSelected;
+        private SquareErrorState _state;
 
         [Parameter]
         public EventCallback<MouseEventArgs> Clicked { get; set; }
 
         [Parameter]
         public int Given { get; set; }
+
+        [Parameter]
+        public int Row { get; set; }
+
+        [Parameter]
+        public int Column { get; set; }
+
+        [Parameter]
+        public int Group { get; set; }
 
         public string DisplayValue
         {
@@ -72,7 +89,18 @@ namespace SudokuApp.Components
             }
         }
 
-        
+        public SquareErrorState ErrorState
+        {
+            get
+            {
+                return _state;
+            }
+            set
+            {
+                _state = value;
+                StateHasChanged();
+            }
+        }
 
         public static string GetStyle()
         {
@@ -84,13 +112,25 @@ namespace SudokuApp.Components
         {
             if (this.IsSelected)
             {
-                return MudBlazor.Color.Primary;
+                return MudBlazor.Color.Info;
             }
             else
             {
-                return MudBlazor.Color.Default;
+                return this._state switch
+                {
+                    SquareErrorState.NotChecked => MudBlazor.Color.Default,
+                    SquareErrorState.Error => MudBlazor.Color.Error,
+                    SquareErrorState.Safe => MudBlazor.Color.Success,
+                    _ => MudBlazor.Color.Default,
+                };
             }
             
+        }
+
+        public static MudBlazor.Color GetTextColor()
+        {
+            
+            return MudBlazor.Color.Default;
         }
 
         public async void OnClick(MouseEventArgs args)
