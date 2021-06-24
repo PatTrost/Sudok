@@ -19,10 +19,6 @@ namespace SudokuApp.Components
 
     public partial class SudokuSquare
     {
-        private int _value;
-        private bool _isSelected;
-        private SquareErrorState _state;
-
         [Parameter]
         public EventCallback<MouseEventArgs> Clicked { get; set; }
 
@@ -38,6 +34,10 @@ namespace SudokuApp.Components
         [Parameter]
         public int Group { get; set; }
 
+        private int _value;
+        private bool _isSelected;
+        private SquareErrorState _state;
+
         public string DisplayValue
         {
             get
@@ -52,6 +52,7 @@ namespace SudokuApp.Components
                 }
             }
         }
+
         public int Value
         {
             get
@@ -71,6 +72,7 @@ namespace SudokuApp.Components
                 if(Given == 0)
                 {
                     this._value = value;
+                    this.ErrorState = SquareErrorState.NotChecked;
                     StateHasChanged();
                 }
             }
@@ -104,7 +106,6 @@ namespace SudokuApp.Components
 
         public static string GetStyle()
         {
-
             return "width: 75px; height: 75px;";
         }
 
@@ -116,21 +117,48 @@ namespace SudokuApp.Components
             }
             else
             {
-                return this._state switch
-                {
-                    SquareErrorState.NotChecked => MudBlazor.Color.Default,
-                    SquareErrorState.Error => MudBlazor.Color.Error,
-                    SquareErrorState.Safe => MudBlazor.Color.Success,
-                    _ => MudBlazor.Color.Default,
-                };
+                return GetStateColor();
             }
             
         }
 
-        public static MudBlazor.Color GetTextColor()
+        public static string GetButtonStyle()
         {
+            return "width: 73px; height: 73px;";
+        }
+
+        public MudBlazor.Color GetButtonColor()
+        {
+            return GetStateColor();
+        }
+
+        private MudBlazor.Color GetStateColor()
+        {
+            return this._state switch
+            {
+                SquareErrorState.NotChecked => MudBlazor.Color.Default,
+                SquareErrorState.Error => MudBlazor.Color.Error,
+                SquareErrorState.Safe => MudBlazor.Color.Success,
+                _ => MudBlazor.Color.Default,
+            };
+        }
+
+        public static string GetTextStyle()
+        {
+            return "font-size: 40px;";
+        }
+
+        public MudBlazor.Color GetTextColor()
+        {
+            if (this.Given == 0)
+            {
+                return MudBlazor.Color.Primary;
+            }
+            else
+            {
+                return MudBlazor.Color.Surface;
+            }
             
-            return MudBlazor.Color.Default;
         }
 
         public async void OnClick(MouseEventArgs args)
@@ -138,8 +166,6 @@ namespace SudokuApp.Components
             await Clicked.InvokeAsync(args);
             this.IsSelected = !this.IsSelected;
         }
-
-        
 
         public void KeyboardEventHandler(KeyboardEventArgs args)
         {

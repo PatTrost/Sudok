@@ -14,9 +14,7 @@ namespace SudokuApp.Pages
         public string Givens { get; set; }
 
         private SudokuBoard sudokuBoard;
-
         public SudokuBoard SudokuBoard => sudokuBoard;
-
         bool _drawerOpen = false;
 
         void DrawerToggle()

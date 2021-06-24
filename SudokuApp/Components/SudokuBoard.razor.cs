@@ -20,7 +20,6 @@ namespace SudokuApp.Components
 
         private bool _initialised;
         private List<int> _givens;
-
         public List<SudokuSquare> sudokuSquares;
 
         protected override async Task OnInitializedAsync()
@@ -97,11 +96,14 @@ namespace SudokuApp.Components
                     {
                         if (square.Value == checkSquare.Value && square.Value != 0 && square != checkSquare)
                         {
-                            conflict = true;
+
+                                conflict = true;
+
                         }
                     }
                 }
-                if (square.Value == 0)
+                
+                if (square.Value == 0 || square.Value == square.Given)
                 {
                     square.ErrorState = SquareErrorState.NotChecked;
                 }
@@ -118,6 +120,5 @@ namespace SudokuApp.Components
                 }
             }
         }
-        
     }
 }
