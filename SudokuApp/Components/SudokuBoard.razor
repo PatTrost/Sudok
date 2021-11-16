@@ -1,130 +1,31 @@
 ﻿@inherits ComponentBase
 
-<MudPaper Style="color:md-theme-black;height:677px;width:677px;" Square="true">
-	<MudGrid Spacing="0" Justify="Justify.Center">
-		<SudokuSquare @ref="sudokuSquares[0]" Clicked="SquareClicked" Given="_givens[0]" Row="1" Column="1" Group="1"/>
-		<SudokuSquare @ref="sudokuSquares[1]" Clicked="SquareClicked" Given="_givens[1]" Row="1" Column="2" Group="1"/>
-		<SudokuSquare @ref="sudokuSquares[2]" Clicked="SquareClicked" Given="_givens[2]" Row="1" Column="3" Group="1"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[3]" Clicked="SquareClicked" Given="_givens[3]" Row="1" Column="4" Group="2"/>
-		<SudokuSquare @ref="sudokuSquares[4]" Clicked="SquareClicked" Given="_givens[4]" Row="1" Column="5" Group="2"/>
-		<SudokuSquare @ref="sudokuSquares[5]" Clicked="SquareClicked" Given="_givens[5]" Row="1" Column="6" Group="2"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[6]" Clicked="SquareClicked" Given="_givens[6]" Row="1" Column="7" Group="3"/>
-		<SudokuSquare @ref="sudokuSquares[7]" Clicked="SquareClicked" Given="_givens[7]" Row="1" Column="8" Group="3"/>
-		<SudokuSquare @ref="sudokuSquares[8]" Clicked="SquareClicked" Given="_givens[8]" Row="1" Column="9" Group="3"/>
-	</MudGrid>
+<MudPaper Style="height:677px;width:677px;" Square="true">
 
-	<MudGrid Spacing="0" Justify="Justify.Center">
-		<SudokuSquare @ref="sudokuSquares[9]" Clicked="SquareClicked" Given="_givens[9]" Row="2" Column="1" Group="1"/>
-		<SudokuSquare @ref="sudokuSquares[10]" Clicked="SquareClicked" Given="_givens[10]" Row="2" Column="2" Group="1"/>
-		<SudokuSquare @ref="sudokuSquares[11]" Clicked="SquareClicked" Given="_givens[11]" Row="2" Column="3" Group="1"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[12]" Clicked="SquareClicked" Given="_givens[12]" Row="2" Column="4" Group="2"/>
-		<SudokuSquare @ref="sudokuSquares[13]" Clicked="SquareClicked" Given="_givens[13]" Row="2" Column="5" Group="2"/>
-		<SudokuSquare @ref="sudokuSquares[14]" Clicked="SquareClicked" Given="_givens[14]" Row="2" Column="6" Group="2"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[15]" Clicked="SquareClicked" Given="_givens[15]" Row="2" Column="7" Group="3"/>
-		<SudokuSquare @ref="sudokuSquares[16]" Clicked="SquareClicked" Given="_givens[16]" Row="2" Column="8" Group="3"/>
-		<SudokuSquare @ref="sudokuSquares[17]" Clicked="SquareClicked" Given="_givens[17]" Row="2" Column="9" Group="3"/>
-	</MudGrid>
 
-	<MudGrid Spacing="0" Justify="Justify.Center">
-		<SudokuSquare @ref="sudokuSquares[18]" Clicked="SquareClicked" Given="_givens[18]" Row="3" Column="1" Group="1"/>
-		<SudokuSquare @ref="sudokuSquares[19]" Clicked="SquareClicked" Given="_givens[19]" Row="3" Column="2" Group="1"/>
-		<SudokuSquare @ref="sudokuSquares[20]" Clicked="SquareClicked" Given="_givens[20]" Row="3" Column="3" Group="1"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[21]" Clicked="SquareClicked" Given="_givens[21]" Row="3" Column="4" Group="2"/>
-		<SudokuSquare @ref="sudokuSquares[22]" Clicked="SquareClicked" Given="_givens[22]" Row="3" Column="5" Group="2"/>
-		<SudokuSquare @ref="sudokuSquares[23]" Clicked="SquareClicked" Given="_givens[23]" Row="3" Column="6" Group="2"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[24]" Clicked="SquareClicked" Given="_givens[24]" Row="3" Column="7" Group="3"/>
-		<SudokuSquare @ref="sudokuSquares[25]" Clicked="SquareClicked" Given="_givens[25]" Row="3" Column="8" Group="3"/>
-		<SudokuSquare @ref="sudokuSquares[26]" Clicked="SquareClicked" Given="_givens[26]" Row="3" Column="9" Group="3"/>
-	</MudGrid>
-	<MudDivider/>
-	<MudGrid Spacing="0" Justify="Justify.Center">
-		<SudokuSquare @ref="sudokuSquares[27]" Clicked="SquareClicked" Given="_givens[27]" Row="4" Column="1" Group="4"/>
-		<SudokuSquare @ref="sudokuSquares[28]" Clicked="SquareClicked" Given="_givens[28]" Row="4" Column="2" Group="4"/>
-		<SudokuSquare @ref="sudokuSquares[29]" Clicked="SquareClicked" Given="_givens[29]" Row="4" Column="3" Group="4"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[30]" Clicked="SquareClicked" Given="_givens[30]" Row="4" Column="4" Group="5"/>
-		<SudokuSquare @ref="sudokuSquares[31]" Clicked="SquareClicked" Given="_givens[31]" Row="4" Column="5" Group="5"/>
-		<SudokuSquare @ref="sudokuSquares[32]" Clicked="SquareClicked" Given="_givens[32]" Row="4" Column="6" Group="5"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[33]" Clicked="SquareClicked" Given="_givens[33]" Row="4" Column="7" Group="6"/>
-		<SudokuSquare @ref="sudokuSquares[34]" Clicked="SquareClicked" Given="_givens[34]" Row="4" Column="8" Group="6"/>
-		<SudokuSquare @ref="sudokuSquares[35]" Clicked="SquareClicked" Given="_givens[35]" Row="4" Column="9" Group="6"/>
-	</MudGrid>
+    @for (int i = 0; i < 9; i++)
+    {
+        int row = i;
 
-	<MudGrid Spacing="0" Justify="Justify.Center">
-		<SudokuSquare @ref="sudokuSquares[36]" Clicked="SquareClicked" Given="_givens[36]" Row="5" Column="1" Group="4"/>
-		<SudokuSquare @ref="sudokuSquares[37]" Clicked="SquareClicked" Given="_givens[37]" Row="5" Column="2" Group="4"/>
-		<SudokuSquare @ref="sudokuSquares[38]" Clicked="SquareClicked" Given="_givens[38]" Row="5" Column="3" Group="4"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[39]" Clicked="SquareClicked" Given="_givens[39]" Row="5" Column="4" Group="5"/>
-		<SudokuSquare @ref="sudokuSquares[40]" Clicked="SquareClicked" Given="_givens[40]" Row="5" Column="5" Group="5"/>
-		<SudokuSquare @ref="sudokuSquares[41]" Clicked="SquareClicked" Given="_givens[41]" Row="5" Column="6" Group="5"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[42]" Clicked="SquareClicked" Given="_givens[42]" Row="5" Column="7" Group="6"/>
-		<SudokuSquare @ref="sudokuSquares[43]" Clicked="SquareClicked" Given="_givens[43]" Row="5" Column="8" Group="6"/>
-		<SudokuSquare @ref="sudokuSquares[44]" Clicked="SquareClicked" Given="_givens[44]" Row="5" Column="9" Group="6"/>
-	</MudGrid>
+        @if (row % 3 == 0 && row != 0)
+        {
+            <MudDivider />
+        }
 
-	<MudGrid Spacing="0" Justify="Justify.Center">
-		<SudokuSquare @ref="sudokuSquares[45]" Clicked="SquareClicked" Given="_givens[45]" Row="6" Column="1" Group="4"/>
-		<SudokuSquare @ref="sudokuSquares[46]" Clicked="SquareClicked" Given="_givens[46]" Row="6" Column="2" Group="4"/>
-		<SudokuSquare @ref="sudokuSquares[47]" Clicked="SquareClicked" Given="_givens[47]" Row="6" Column="3" Group="4"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[48]" Clicked="SquareClicked" Given="_givens[48]" Row="6" Column="4" Group="5"/>
-		<SudokuSquare @ref="sudokuSquares[49]" Clicked="SquareClicked" Given="_givens[49]" Row="6" Column="5" Group="5"/>
-		<SudokuSquare @ref="sudokuSquares[50]" Clicked="SquareClicked" Given="_givens[50]" Row="6" Column="6" Group="5"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[51]" Clicked="SquareClicked" Given="_givens[51]" Row="6" Column="7" Group="6"/>
-		<SudokuSquare @ref="sudokuSquares[52]" Clicked="SquareClicked" Given="_givens[52]" Row="6" Column="8" Group="6"/>
-		<SudokuSquare @ref="sudokuSquares[53]" Clicked="SquareClicked" Given="_givens[53]" Row="6" Column="9" Group="6"/>
-	</MudGrid>
-	<MudDivider />
-	<MudGrid Spacing="0" Justify="Justify.Center">
-		<SudokuSquare @ref="sudokuSquares[54]" Clicked="SquareClicked" Given="_givens[54]" Row="7" Column="1" Group="7"/>
-		<SudokuSquare @ref="sudokuSquares[55]" Clicked="SquareClicked" Given="_givens[55]" Row="7" Column="2" Group="7"/>
-		<SudokuSquare @ref="sudokuSquares[56]" Clicked="SquareClicked" Given="_givens[56]" Row="7" Column="3" Group="7"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[57]" Clicked="SquareClicked" Given="_givens[57]" Row="7" Column="4" Group="8"/>
-		<SudokuSquare @ref="sudokuSquares[58]" Clicked="SquareClicked" Given="_givens[58]" Row="7" Column="5" Group="8"/>
-		<SudokuSquare @ref="sudokuSquares[59]" Clicked="SquareClicked" Given="_givens[59]" Row="7" Column="6" Group="8"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[60]" Clicked="SquareClicked" Given="_givens[60]" Row="7" Column="7" Group="9"/>
-		<SudokuSquare @ref="sudokuSquares[61]" Clicked="SquareClicked" Given="_givens[61]" Row="7" Column="8" Group="9"/>
-		<SudokuSquare @ref="sudokuSquares[62]" Clicked="SquareClicked" Given="_givens[62]" Row="7" Column="9" Group="9"/>
-	</MudGrid>
+        <MudGrid Spacing="0" Justify="Justify.Center">
+            @for (int j = 0; j < 9; j++)
+            {
+                int col = j;
+                int refnum = col + (row * 9);
+                @if (col % 3 == 0 && col != 0)
+                {
+                    <MudDivider Vertical="true" FlexItem="true" />
+                }
+                <SudokuSquare @ref="sudokuSquares[refnum]" Clicked="SquareClicked" Given="_givens[refnum]" />
+            }
+        </MudGrid>
 
-	<MudGrid Spacing="0" Justify="Justify.Center">
-		<SudokuSquare @ref="sudokuSquares[63]" Clicked="SquareClicked" Given="_givens[63]" Row="8" Column="1" Group="7"/>
-		<SudokuSquare @ref="sudokuSquares[64]" Clicked="SquareClicked" Given="_givens[64]" Row="8" Column="2" Group="7"/>
-		<SudokuSquare @ref="sudokuSquares[65]" Clicked="SquareClicked" Given="_givens[65]" Row="8" Column="3" Group="7"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[66]" Clicked="SquareClicked" Given="_givens[66]" Row="8" Column="4" Group="8"/>
-		<SudokuSquare @ref="sudokuSquares[67]" Clicked="SquareClicked" Given="_givens[67]" Row="8" Column="5" Group="8"/>
-		<SudokuSquare @ref="sudokuSquares[68]" Clicked="SquareClicked" Given="_givens[68]" Row="8" Column="6" Group="8"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[69]" Clicked="SquareClicked" Given="_givens[69]" Row="8" Column="7" Group="9"/>
-		<SudokuSquare @ref="sudokuSquares[70]" Clicked="SquareClicked" Given="_givens[70]" Row="8" Column="8" Group="9"/>
-		<SudokuSquare @ref="sudokuSquares[71]" Clicked="SquareClicked" Given="_givens[71]" Row="8" Column="9" Group="9"/>
-	</MudGrid>
+    }
 
-	<MudGrid Spacing="0" Justify="Justify.Center">
-		<SudokuSquare @ref="sudokuSquares[72]" Clicked="SquareClicked" Given="_givens[72]" Row="9" Column="1" Group="7"/>
-		<SudokuSquare @ref="sudokuSquares[73]" Clicked="SquareClicked" Given="_givens[73]" Row="9" Column="2" Group="7"/>
-		<SudokuSquare @ref="sudokuSquares[74]" Clicked="SquareClicked" Given="_givens[74]" Row="9" Column="3" Group="7"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[75]" Clicked="SquareClicked" Given="_givens[75]" Row="9" Column="4" Group="8"/>
-		<SudokuSquare @ref="sudokuSquares[76]" Clicked="SquareClicked" Given="_givens[76]" Row="9" Column="5" Group="8"/>
-		<SudokuSquare @ref="sudokuSquares[77]" Clicked="SquareClicked" Given="_givens[77]" Row="9" Column="6" Group="8"/>
-		<MudDivider Vertical="true" FlexItem="true"/>
-		<SudokuSquare @ref="sudokuSquares[78]" Clicked="SquareClicked" Given="_givens[78]" Row="9" Column="7" Group="9"/>
-		<SudokuSquare @ref="sudokuSquares[79]" Clicked="SquareClicked" Given="_givens[79]" Row="9" Column="8" Group="9"/>
-		<SudokuSquare @ref="sudokuSquares[80]" Clicked="SquareClicked" Given="_givens[80]" Row="9" Column="9" Group="9"/>
-	</MudGrid>
 </MudPaper>
 

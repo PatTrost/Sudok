@@ -53,11 +53,19 @@ namespace SudokuApp.Components
                 }
 
                 sudokuSquares = new List<SudokuSquare>();
-                for (int i = 0; i < squareCount; i++)
+                int currentGroup;
+                for (int i = 0; i < this.Height; i++)
                 {
-                    sudokuSquares.Add(new SudokuSquare());
+                    for (int j = 0; j < this.Width; j++)
+                    {
+                        currentGroup = ((i / 3) * 3) + ((j / 3) + 1);
+                        sudokuSquares.Add(new SudokuSquare());
+                        sudokuSquares[i].Row = i;
+                        sudokuSquares[i].Column = j;
+                        sudokuSquares[i].Group = currentGroup;
+                    }
                 }
-                
+
                 this._initialised = true;
             }
         }
@@ -79,7 +87,15 @@ namespace SudokuApp.Components
             {
                 foreach (SudokuSquare square in sudokuSquares)
                 {
-                    square.IsSelected = false;
+                    try
+                    {
+                        square.IsSelected = false;
+                    }
+                    catch
+                    {
+
+                    }
+
                 }
             }
         }
@@ -89,6 +105,7 @@ namespace SudokuApp.Components
             bool conflict;
             foreach (SudokuSquare square in sudokuSquares)
             {
+                square.IsSelected = false;
                 conflict = false;
                 foreach (SudokuSquare checkSquare in sudokuSquares)
                 {

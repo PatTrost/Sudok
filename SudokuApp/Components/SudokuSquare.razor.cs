@@ -25,18 +25,17 @@ namespace SudokuApp.Components
         [Parameter]
         public int Given { get; set; }
 
-        [Parameter]
-        public int Row { get; set; }
-
-        [Parameter]
-        public int Column { get; set; }
-
-        [Parameter]
-        public int Group { get; set; }
-
         private int _value;
         private bool _isSelected;
         private SquareErrorState _state;
+
+        
+
+        public int Row { get; set; }
+
+        public int Column { get; set; }
+
+        public int Group { get; set; }
 
         public string DisplayValue
         {
@@ -86,8 +85,11 @@ namespace SudokuApp.Components
             }
             set
             {
-                this._isSelected = value;
-                StateHasChanged();
+                if(this.IsSelected != value)
+                {
+                    this._isSelected = value;
+                    StateHasChanged();
+                }
             }
         }
 
@@ -148,18 +150,18 @@ namespace SudokuApp.Components
             return "font-size: 40px;";
         }
 
-        public MudBlazor.Color GetTextColor()
-        {
-            if (this.Given == 0)
-            {
-                return MudBlazor.Color.Primary;
-            }
-            else
-            {
-                return MudBlazor.Color.Surface;
-            }
+        //public MudBlazor.Color GetTextColor()
+        //{
+        //    if (this.Given == 0)
+        //    {
+        //        return MudBlazor.Color.Primary;
+        //    }
+        //    else
+        //    {
+        //        return MudBlazor.Color.Surface;
+        //    }
             
-        }
+        //}
 
         public async void OnClick(MouseEventArgs args)
         {

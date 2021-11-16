@@ -12,7 +12,7 @@
         <MudAppBar Elevation="1">
             <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
             <MudText Typo="Typo.h5" Class="ml-3">Sudoku</MudText>
-            <MudAppBarSpacer />
+            <MudSpacer />
             <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
         </MudAppBar>
         <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
@@ -23,8 +23,9 @@
         <MudMainContent >
             <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-16">
                 <MudText Typo="Typo.h3" GutterBottom="true">Sudoku</MudText>
-                <SudokuBoard @ref="sudokuBoard" Givens="@Givens" Width="9" Height ="9" />
+                <SudokuBoard @ref="sudokuBoard" Givens="@Givens" Width="9" Height="9" />
                 <MudButton Variant="Variant.Filled" OnClick="CheckSudoku">Check Sudoku</MudButton>
+
             </MudContainer>
         </MudMainContent>
     </MudLayout>
