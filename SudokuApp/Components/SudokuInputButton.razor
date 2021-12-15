@@ -1,0 +1,10 @@
+﻿@inherits ComponentBase
+
+
+<MudButton Variant="Variant.Filled"
+            Class="rounded-0"
+            Style=@GetButtonStyle()
+            @onclick="OnClick">
+    <MudText Style=@GetTextStyle()>@Value.ToString()</MudText>
+</MudButton>
+ 

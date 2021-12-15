@@ -11,12 +11,9 @@ namespace SudokuApp.Components
 {
     public partial class SudokuBoard
     {
-        [Parameter]
-        public string Givens { get; set; }
-        [Parameter]
-        public int Width { get; set; }
-        [Parameter]
-        public int Height { get; set; }
+        [Parameter] public string Givens { get; set; }
+        [Parameter] public int Width { get; set; }
+        [Parameter] public int Height { get; set; }
 
         private bool _initialised;
         private List<int> _givens;
@@ -53,16 +50,11 @@ namespace SudokuApp.Components
                 }
 
                 sudokuSquares = new List<SudokuSquare>();
-                int currentGroup;
                 for (int i = 0; i < this.Height; i++)
                 {
                     for (int j = 0; j < this.Width; j++)
                     {
-                        currentGroup = ((i / 3) * 3) + ((j / 3) + 1);
                         sudokuSquares.Add(new SudokuSquare());
-                        sudokuSquares[i].Row = i;
-                        sudokuSquares[i].Column = j;
-                        sudokuSquares[i].Group = currentGroup;
                     }
                 }
 
@@ -81,21 +73,24 @@ namespace SudokuApp.Components
             }
         }
 
+        public void InputHandler(int v)
+        {
+            foreach (SudokuSquare square in sudokuSquares)
+            {
+                if (square.IsSelected)
+                {
+                    square.InputHandler(v);
+                }
+            }
+        }
+
         public void SquareClicked(MouseEventArgs args)
         {
             if (!args.CtrlKey)
             {
                 foreach (SudokuSquare square in sudokuSquares)
                 {
-                    try
-                    {
-                        square.IsSelected = false;
-                    }
-                    catch
-                    {
-
-                    }
-
+                    square.IsSelected = false;
                 }
             }
         }
@@ -109,13 +104,11 @@ namespace SudokuApp.Components
                 conflict = false;
                 foreach (SudokuSquare checkSquare in sudokuSquares)
                 {
-                    if(square.Row == checkSquare.Row || square.Column == checkSquare.Column || square.Group == checkSquare.Group)
+                    if (square.Row == checkSquare.Row || square.Column == checkSquare.Column || square.Group == checkSquare.Group)
                     {
                         if (square.Value == checkSquare.Value && square.Value != 0 && square != checkSquare)
                         {
-
-                                conflict = true;
-
+                            conflict = true;
                         }
                     }
                 }

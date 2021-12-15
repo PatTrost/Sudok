@@ -10,10 +10,11 @@ namespace SudokuApp.Pages
 {
     partial class Index
     {
-        [Parameter]
-        public string Givens { get; set; }
+        [Parameter] public string Givens { get; set; }
 
         private SudokuBoard sudokuBoard;
+        private SudokuInput sudokuInput;
+
         public SudokuBoard SudokuBoard => sudokuBoard;
         bool _drawerOpen = false;
 
@@ -24,12 +25,17 @@ namespace SudokuApp.Pages
 
         public void KeyboardEventHandler(KeyboardEventArgs args)
         {
-            SudokuBoard.KeyboardEventHandler(args);
+            sudokuInput.KeyboardEventHandler(args);
         }
 
-        void CheckSudoku()
+        public void InputHandler(int v)
         {
-            SudokuBoard.CheckValues();
+            sudokuBoard.InputHandler(v);
+        }
+
+        public void CheckSudokuBoard()
+        {
+            sudokuBoard.CheckValues();
         }
 
     }

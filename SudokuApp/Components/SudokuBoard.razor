@@ -17,11 +17,12 @@
             {
                 int col = j;
                 int refnum = col + (row * 9);
+                int group = ((row / 3) * 3) + ((col / 3) + 1);
                 @if (col % 3 == 0 && col != 0)
                 {
                     <MudDivider Vertical="true" FlexItem="true" />
                 }
-                <SudokuSquare @ref="sudokuSquares[refnum]" Clicked="SquareClicked" Given="_givens[refnum]" />
+                <SudokuSquare @ref="sudokuSquares[refnum]" Clicked="SquareClicked" Given="_givens[refnum]" Row="row" Column="col" Group="group"/>
             }
         </MudGrid>
 

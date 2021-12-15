@@ -19,23 +19,18 @@ namespace SudokuApp.Components
 
     public partial class SudokuSquare
     {
-        [Parameter]
-        public EventCallback<MouseEventArgs> Clicked { get; set; }
-
-        [Parameter]
-        public int Given { get; set; }
+        [Parameter] public EventCallback<MouseEventArgs> Clicked { get; set; }
+        [Parameter] public int Given { get; set; }
 
         private int _value;
         private bool _isSelected;
         private SquareErrorState _state;
 
-        
+        [Parameter] public int Row { get; set; }
 
-        public int Row { get; set; }
+        [Parameter] public int Column { get; set; }
 
-        public int Column { get; set; }
-
-        public int Group { get; set; }
+        [Parameter] public int Group { get; set; }
 
         public string DisplayValue
         {
@@ -188,6 +183,17 @@ namespace SudokuApp.Components
                     {
 
                     }
+                }
+            }
+        }
+
+        public void InputHandler(int v)
+        {
+            if (this.IsSelected)
+            {
+                if(v <10 && v >= 0)
+                {
+                    this.Value = v;
                 }
             }
         }

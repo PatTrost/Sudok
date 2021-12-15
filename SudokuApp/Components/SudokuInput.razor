@@ -1,3 +1,25 @@
 ﻿@inherits ComponentBase
 
-
+<MudPaper Style="height:400px;width:300px;">
+    <MudGrid Spacing="0" Justify="Justify.Center">
+        <SudokuInputButton Clicked="ButtonHandler" Value="7" />
+        <SudokuInputButton Clicked="ButtonHandler" Value="8" />
+        <SudokuInputButton Clicked="ButtonHandler" Value="9" />
+    </MudGrid>
+    <MudGrid Spacing="0" Justify="Justify.Center">
+        <SudokuInputButton Clicked="ButtonHandler" Value="4" />
+        <SudokuInputButton Clicked="ButtonHandler" Value="5" />
+        <SudokuInputButton Clicked="ButtonHandler" Value="6" />
+    </MudGrid>
+    <MudGrid Spacing="0" Justify="Justify.Center">
+        <SudokuInputButton Clicked="ButtonHandler" Value="1" />
+        <SudokuInputButton Clicked="ButtonHandler" Value="2" />
+        <SudokuInputButton Clicked="ButtonHandler" Value="3" />
+    </MudGrid>
+    <MudGrid Spacing="0" Justify="Justify.Center">
+        <SudokuInputButton Clicked="ButtonHandler" Value="0" />
+    </MudGrid>
+    <MudGrid Spacing="0" Justify="Justify.Center">
+        <MudButton Variant="Variant.Filled" OnClick="CheckSudoku">Check Sudoku</MudButton>
+    </MudGrid>
+</MudPaper>
