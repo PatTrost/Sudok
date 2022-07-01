@@ -23,6 +23,7 @@ namespace SudokuApp.Components
         [Parameter] public int Given { get; set; }
 
         private int _value;
+        private List<int> _possibles;
         private bool _isSelected;
         private SquareErrorState _state;
 
